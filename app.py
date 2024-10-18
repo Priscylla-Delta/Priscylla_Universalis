@@ -3,7 +3,7 @@ import Universalis_api_for_Flask as api
 
 
 app = Flask(__name__)
-
+#UWU
 
 @app.route('/')
 def get_request():
