@@ -1,0 +1,108 @@
+<!-- templates/search.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Search for Items</h2>
+    <form action="/search" method="POST">
+        <label for="item_Name">Item Name</label>
+        <input list="item_Names" type="text" id="item_Name" name="item_Name" required>
+        <datalist id="item_Names">
+
+            {% for valid_name in valid_names %}
+
+            <option> {{ valid_name }} </option>
+
+            {% endfor %}
+        </datalist>
+
+        <label for="region">Region</label>
+        <input list="regions" type="text" id="region" name="region" required>
+        <datalist id="regions">
+
+            {% for valid_Region in valid_Regions %}
+
+            <option> {{ valid_Region }} </option>
+
+            {% endfor %}
+        </datalist>
+
+        <label for="quality">Quality</label>
+        <input list="qualities" type="text" id="quality" name="quality" required>
+        <datalist id="qualities">
+
+            {% for valid_quality in valid_Qualities %}
+
+            <option> {{ valid_quality }} </option>
+
+            {% endfor %}
+        </datalist>
+
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" required min="1">
+
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+</body>
+</html>

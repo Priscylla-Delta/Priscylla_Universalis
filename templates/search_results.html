@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priscylla Universalis Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .summary {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Optimal Purchase Order for {{ result.quantity }} {{ result.quality }} {{ result.item_Name }} ({{ result.item_ID }}) in {{ result.region }}</h2>
+    
+    <table>
+        <thead>
+            <tr>
+
+                <th>Quantity</th>
+                <th>Quality</th>
+                <th>Item Name</th>
+                <th>Retainer</th>
+                <th>World Name</th>
+                <th>Price per Item</th>
+                <th>Total Cost</th>
+                <th>Item Cost</th>
+                <th>Taxes Added</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in result.purchases %}
+            <tr>
+
+                <td>{{ purchase.quantity }}</td>
+                <td>{{ purchase.quality }}</td>
+                <td>{{ result.item_Name }}</td>
+                <td>{{ purchase.retainerName }}</td>
+                <td>{{ purchase.worldName }}</td>
+                <td>{{ purchase.price_per_unit }}</td>
+                <td>{{ purchase.total_Cost }}</td>
+                <td>{{ purchase.item_Costs }}</td>
+                <th>{{ purchase.tax_cost }}</th>
+                
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="summary">
+        <p><strong>Total Amount Ordered</strong> {{ result.quantity }}</p>
+        <p><strong>Total Amount Bought:</strong> {{ result.total_Bought }}</p>
+        <p><strong>Total Cost:</strong> {{ result.total_Cost }} Gil</p>
+        <p><strong>Total Item Cost:</strong> {{ result.total_item_Cost }} Gil</p>
+        <p><strong>Total Tax Cost:</strong> {{ result.total_Tax_Cost }} Gil</p>
+        <p><strong>Average Price Per Item:</strong> {{ result.average_Price_Per_Unit }} Gil</p>
+    </div>
+</div>
+
+</body>
+</html>
