@@ -226,7 +226,7 @@ def render_purchase_Order(purchase_Order, listings, validated_Input):
         total_Cost += item_Costs + tax_cost
 
         # Append Price Per Units
-        price_per_unit = float(listing["pricePerUnit"])
+        price_per_unit = listing["pricePerUnit"]
         price_Per_Units.append(price_per_unit)
 
         # Append individual purchases for dynamic rendering
@@ -242,7 +242,7 @@ def render_purchase_Order(purchase_Order, listings, validated_Input):
         })
 
     # Compute Average
-    average_Price_Per_Unit = round(sum(price_Per_Units) / len(price_Per_Units), ndigits=2)
+    average_Price_Per_Unit = round(float(sum(price_Per_Units) / len(price_Per_Units)), ndigits=2)
 
     # Return the necessary data for dynamic rendering
     return {
